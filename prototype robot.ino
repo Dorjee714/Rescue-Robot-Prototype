@@ -140,7 +140,9 @@ void loop() {
   digitalWrite(trigPin, LOW);
 
   duration = pulseIn(echoPin, HIGH);
-  distance = duration * 0.034 / 2;
+  distance = microsecondsToCentimetres(duration);
+
+  
 
   Serial.print("Distance: ");
   Serial.print(distance);
@@ -201,6 +203,10 @@ void loop() {
   delay(250);
 }
 
+//ULTRASONIC 
+long microsecondsToCentimetres(long microseconds) {
+  return microseconds / 29 / 2;
+}
 
 // MOTOR FUNCTIONS
 
